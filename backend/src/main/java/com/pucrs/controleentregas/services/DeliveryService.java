@@ -1,9 +1,6 @@
 package com.pucrs.controleentregas.services;
 
-import com.pucrs.controleentregas.dtos.CreateDeliveryDTO;
-import com.pucrs.controleentregas.dtos.DashboardDTO;
-import com.pucrs.controleentregas.dtos.EditDeliveryDTO;
-import com.pucrs.controleentregas.dtos.ReportDTO;
+import com.pucrs.controleentregas.dtos.*;
 import com.pucrs.controleentregas.entities.DeliveryEntity;
 import com.pucrs.controleentregas.entities.OperatorEntity;
 import com.pucrs.controleentregas.entities.ResidentEntity;
@@ -11,14 +8,12 @@ import com.pucrs.controleentregas.repositories.DeliveryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.time.chrono.ChronoLocalDate;
-import java.time.chrono.ChronoLocalDateTime;
 import java.time.temporal.ChronoUnit;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DeliveryService {
@@ -86,7 +81,7 @@ public class DeliveryService {
         return DashboardDTO.builder()
                 .numberDeliveriesLastThirtyDays(this.numberDeliveriesLastThirtyDays())
                 .numberDeliveriesNotWithdrawn(this.numberDeliveriesNotWithdrawn())
-                .average(this.averageTimeBetweenRegistrationAndWithdrawalDeliveries())
+                .averageDate(this.averageTimeBetweenRegistrationAndWithdrawalDeliveries())
                 .build();
     }
 
@@ -98,9 +93,39 @@ public class DeliveryService {
         return this.findAllDeliveriesNotWithdrawn().size();
     }
 
-    public LocalDateTime averageTimeBetweenRegistrationAndWithdrawalDeliveries() {
+    public AverageDateDTO averageTimeBetweenRegistrationAndWithdrawalDeliveries() {
         List<DeliveryEntity> deliveries = this.repository.findAllDeliveriesWithdrawn();
-        return null;
+
+        int year = 0;
+        int month = 0;
+        int day = 0;
+        int hour = 0;
+        int minute = 0;
+        int second = 0;
+
+        for (DeliveryEntity delivery : deliveries) {
+            year += ChronoUnit.YEARS.between(delivery.getRegisterDate().toLocalDate(), delivery.getWithdrawalDate().toLocalDate());
+            month += ChronoUnit.DAYS.between(delivery.getRegisterDate().toLocalDate(), delivery.getWithdrawalDate().toLocalDate());
+            day += ChronoUnit.DAYS.between(delivery.getRegisterDate().toLocalDate(), delivery.getWithdrawalDate().toLocalDate());
+            hour += ChronoUnit.HOURS.between(delivery.getRegisterDate().toLocalTime(), delivery.getWithdrawalDate().toLocalTime());
+            minute += ChronoUnit.MINUTES.between(delivery.getRegisterDate().toLocalTime(), delivery.getWithdrawalDate().toLocalTime());
+            second += ChronoUnit.SECONDS.between(delivery.getRegisterDate().toLocalTime(), delivery.getWithdrawalDate().toLocalTime());
+        }
+        year /= deliveries.size();
+        month /= deliveries.size();
+        day /= deliveries.size();
+        hour /= deliveries.size();
+        minute /= deliveries.size();
+        second /= deliveries.size();
+
+        return AverageDateDTO.builder()
+                .year(year)
+                .month(month)
+                .day(day)
+                .hour(hour)
+                .minute(minute)
+                .second(second)
+                .build();
     }
 
     public List<ReportDTO> generateReport() {

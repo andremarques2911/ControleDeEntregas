@@ -5,7 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Data
 @Builder
@@ -15,6 +16,6 @@ public class DashboardDTO {
 
     private Integer numberDeliveriesLastThirtyDays;
     private Integer numberDeliveriesNotWithdrawn;
-    private LocalDateTime average;
+    private AverageDateDTO averageDate;
 
 }
