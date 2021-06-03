@@ -5,7 +5,7 @@ import com.pucrs.controleentregas.repositories.ResidentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,7 +42,7 @@ public class ResidentService {
 
     public ResidentEntity deactivateResident(Long id) {
         ResidentEntity residentEntity = this.findById(id);
-        residentEntity.setDeactivationDate(LocalDateTime.now());
+        residentEntity.setDeactivationDate(new Date());
         return this.save(residentEntity);
     }
 

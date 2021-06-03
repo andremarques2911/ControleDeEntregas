@@ -1,5 +1,6 @@
 package com.pucrs.controleentregas.services;
 
+import com.pucrs.controleentregas.entities.DeliveryEntity;
 import com.pucrs.controleentregas.entities.OperatorEntity;
 import com.pucrs.controleentregas.repositories.OperatorRepository;
 import org.springframework.beans.factory.annotation.Autowired;

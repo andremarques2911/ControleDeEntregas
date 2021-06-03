@@ -19,7 +19,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "operators")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class OperatorEntity {
 
     @Id
@@ -27,13 +27,14 @@ public class OperatorEntity {
     @Column
     private Long id;
 
-    @Column
+    @Column(nullable = false)
     private String firstName;
 
-    @Column
+    @Column(nullable = false)
     private String lastName;
 
-    @OneToMany(mappedBy = "operator")
+    @JsonManagedReference
+    @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="operator")
     private List<DeliveryEntity> deliveries;
 
 }

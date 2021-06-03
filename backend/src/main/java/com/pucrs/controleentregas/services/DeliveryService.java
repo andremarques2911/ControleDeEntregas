@@ -3,6 +3,7 @@ package com.pucrs.controleentregas.services;
 import com.pucrs.controleentregas.dtos.CreateDeliveryDTO;
 import com.pucrs.controleentregas.dtos.DashboardDTO;
 import com.pucrs.controleentregas.dtos.EditDeliveryDTO;
+import com.pucrs.controleentregas.dtos.ReportDTO;
 import com.pucrs.controleentregas.entities.DeliveryEntity;
 import com.pucrs.controleentregas.entities.OperatorEntity;
 import com.pucrs.controleentregas.entities.ResidentEntity;
@@ -10,10 +11,14 @@ import com.pucrs.controleentregas.repositories.DeliveryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-import java.util.List;
-import java.util.Optional;
+import java.time.chrono.ChronoLocalDate;
+import java.time.chrono.ChronoLocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
 
 @Service
 public class DeliveryService {
@@ -69,6 +74,10 @@ public class DeliveryService {
         return this.repository.findAllByDescriptionLike(description);
     }
 
+    public List<DeliveryEntity> findAllByResidentId(Long id) {
+        return this.repository.findAllByResidentId(id);
+    }
+
     public List<DeliveryEntity> findAllDeliveriesNotWithdrawn() {
         return this.repository.findAllDeliveriesNotWithdrawn();
     }
@@ -91,30 +100,16 @@ public class DeliveryService {
 
     public LocalDateTime averageTimeBetweenRegistrationAndWithdrawalDeliveries() {
         List<DeliveryEntity> deliveries = this.repository.findAllDeliveriesWithdrawn();
-//        double averageRegister = deliveries.stream().map(delivery -> delivery.getRegisterDate())
-//                .mapToLong(teste -> teste.toEpochSecond(ZoneOffset.UTC))
-//                .average()
-//                .getAsDouble();
-//
-//        double averageWithdrawal = deliveries.stream().map(delivery -> delivery.getWithdrawalDate())
-//                .mapToLong(teste -> teste.toEpochSecond(ZoneOffset.UTC))
-//                .average()
-//                .getAsDouble();
-
-//        deliveries.stream().map(delivery -> delivery.getRegisterDate().toLocalTime())
-//            .mapToInt(LocalTime::toSecondOfDay)
-//            .average()
-//            .getAsDouble();
-        double sum = 0;
-        for (DeliveryEntity delivery : deliveries) {
-            sum += delivery.getWithdrawalDate().toEpochSecond(ZoneOffset.UTC) - delivery.getRegisterDate().toEpochSecond(ZoneOffset.UTC);
-        }
-        if (sum > 0) {
-            Double average = sum / deliveries.size();
-            LocalDateTime averageDate = LocalDateTime.ofEpochSecond(average.longValue(), 0, ZoneOffset.UTC);
-            return averageDate;
-        }
         return null;
+    }
+
+    public List<ReportDTO> generateReport() {
+        List<DeliveryEntity> deliveries = this.findAll();
+        List<ReportDTO> report = new ArrayList<>();
+        for (DeliveryEntity delivery : deliveries) {
+            report.add(ReportDTO.parse(delivery));
+        }
+        return report;
     }
 
 }

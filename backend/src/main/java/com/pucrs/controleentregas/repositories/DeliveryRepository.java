@@ -17,6 +17,8 @@ public interface DeliveryRepository extends CrudRepository<DeliveryEntity, Long>
     @Query("from DeliveryEntity vo where upper(vo.description) like concat('%', upper(:description), '%')")
     List<DeliveryEntity> findAllByDescriptionLike(@Param("description") String description);
 
+    List<DeliveryEntity> findAllByResidentId(Long id);
+
     @Query("from DeliveryEntity vo where vo.withdrawalDate is null order by vo.registerDate")
     List<DeliveryEntity> findAllDeliveriesNotWithdrawn();
 

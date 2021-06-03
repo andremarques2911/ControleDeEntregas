@@ -3,6 +3,7 @@ package com.pucrs.controleentregas.controllers;
 import com.pucrs.controleentregas.dtos.CreateDeliveryDTO;
 import com.pucrs.controleentregas.dtos.DashboardDTO;
 import com.pucrs.controleentregas.dtos.EditDeliveryDTO;
+import com.pucrs.controleentregas.dtos.ReportDTO;
 import com.pucrs.controleentregas.entities.DeliveryEntity;
 import com.pucrs.controleentregas.services.DeliveryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,6 +56,12 @@ public class DeliveryController {
     @GetMapping("/searchDashboardInformation")
     public DashboardDTO searchDashboardInformation() {
         return this.service.searchDashboardInformation();
+    }
+
+    @ResponseBody
+    @GetMapping("/generateReport")
+    public List<ReportDTO> generateReport() {
+        return this.service.generateReport();
     }
 
 }

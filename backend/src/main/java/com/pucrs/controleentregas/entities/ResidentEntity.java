@@ -1,18 +1,12 @@
 package com.pucrs.controleentregas.entities;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.List;
+import java.util.Date;
 
 @Data
 @Builder
@@ -20,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "residents")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class ResidentEntity {
 
     @Id
@@ -38,9 +32,9 @@ public class ResidentEntity {
     private Integer apartment;
 
     @Column
-    private LocalDateTime deactivationDate;
+    private Date deactivationDate;
 
-    @OneToMany(mappedBy = "resident")
-    private List<DeliveryEntity> deliveries;
+//    @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="resident")
+//    private List<DeliveryEntity> deliveries;
 
 }
