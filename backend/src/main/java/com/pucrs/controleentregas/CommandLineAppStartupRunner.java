@@ -31,7 +31,7 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        log.info("Começou a popular");
+        log.info("ComeÃ§ou a popular");
 
         OperatorEntity operator = this.operatorService.save(OperatorEntity.builder().firstName("Matheus").lastName("Tosin").build());
 

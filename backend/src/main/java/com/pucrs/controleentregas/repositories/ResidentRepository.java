@@ -11,6 +11,6 @@ public interface ResidentRepository extends CrudRepository<ResidentEntity, Long>
 
     List<ResidentEntity> findAll();
 
-    ResidentEntity findByIdAndAndDeactivationDateIsNull(Long id);
+    ResidentEntity findByIdAndDeactivationDateIsNull(Long id);
 
 }

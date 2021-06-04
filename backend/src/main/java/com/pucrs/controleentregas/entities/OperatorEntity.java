@@ -36,5 +36,4 @@ public class OperatorEntity {
     @JsonManagedReference
     @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="operator")
     private List<DeliveryEntity> deliveries;
-
 }

@@ -54,12 +54,10 @@ public class DeliveryService {
 
     public DeliveryEntity registerWithdrawal(EditDeliveryDTO editDeliveryDTO) {
         DeliveryEntity deliveryEntity = this.findById(editDeliveryDTO.getDeliveryCode());
-        OperatorEntity operatorEntity = this.operatorService.findById(editDeliveryDTO.getOperatorCode());
         ResidentEntity residentEntity = this.residentService.findByActiveId(editDeliveryDTO.getResidentCode());
-        if (deliveryEntity == null || operatorEntity == null || residentEntity == null) {
+        if (deliveryEntity == null || residentEntity == null) {
             return null;
         }
-        deliveryEntity.setOperator(operatorEntity);
         deliveryEntity.setResident(residentEntity);
         deliveryEntity.setWithdrawalDate(LocalDateTime.now());
         return this.repository.save(deliveryEntity);

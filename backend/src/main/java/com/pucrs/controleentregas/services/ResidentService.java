@@ -36,7 +36,7 @@ public class ResidentService {
     }
 
     public ResidentEntity findByActiveId(Long id) {
-        ResidentEntity residentEntity = this.repository.findByIdAndAndDeactivationDateIsNull(id);
+        ResidentEntity residentEntity = this.repository.findByIdAndDeactivationDateIsNull(id);
         return residentEntity;
     }
 

@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 public class EditDeliveryDTO {
 
     private Long deliveryCode;
-    private Long operatorCode;
     private Long residentCode;
 
 }

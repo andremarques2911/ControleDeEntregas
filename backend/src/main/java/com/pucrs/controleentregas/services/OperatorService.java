@@ -37,7 +37,7 @@ public class OperatorService {
 
     public OperatorEntity deleteById(Long id) {
         OperatorEntity operatorEntity = this.findById(id);
-        if (operatorEntity == null || !operatorEntity.getDeliveries().isEmpty()) {
+        if (operatorEntity == null || operatorEntity.getDeliveries() == null || !operatorEntity.getDeliveries().isEmpty()) {
             return null;
         }
         this.repository.delete(operatorEntity);
