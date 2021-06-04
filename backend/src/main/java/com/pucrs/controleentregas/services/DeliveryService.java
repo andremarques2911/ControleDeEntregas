@@ -5,10 +5,11 @@ import com.pucrs.controleentregas.entities.DeliveryEntity;
 import com.pucrs.controleentregas.entities.OperatorEntity;
 import com.pucrs.controleentregas.entities.ResidentEntity;
 import com.pucrs.controleentregas.repositories.DeliveryRepository;
+import com.pucrs.controleentregas.utils.exceptions.DeliveryNotFoundException;
+import com.pucrs.controleentregas.utils.exceptions.ResidentNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -42,10 +43,10 @@ public class DeliveryService {
 
     public DeliveryEntity findById(Long id) {
         Optional<DeliveryEntity> deliveryEntity = this.repository.findById(id);
-        if (deliveryEntity.isPresent()) {
-            return deliveryEntity.get();
+        if (deliveryEntity.isEmpty()) {
+            throw new DeliveryNotFoundException();
         }
-        return null;
+        return deliveryEntity.get();
     }
 
     public List<DeliveryEntity> findAll() {
@@ -55,8 +56,11 @@ public class DeliveryService {
     public DeliveryEntity registerWithdrawal(EditDeliveryDTO editDeliveryDTO) {
         DeliveryEntity deliveryEntity = this.findById(editDeliveryDTO.getDeliveryCode());
         ResidentEntity residentEntity = this.residentService.findByActiveId(editDeliveryDTO.getResidentCode());
-        if (deliveryEntity == null || residentEntity == null) {
-            return null;
+        if (deliveryEntity == null) {
+            throw new DeliveryNotFoundException();
+        }
+        if (residentEntity == null) {
+            throw new ResidentNotFoundException();
         }
         deliveryEntity.setResident(residentEntity);
         deliveryEntity.setWithdrawalDate(LocalDateTime.now());

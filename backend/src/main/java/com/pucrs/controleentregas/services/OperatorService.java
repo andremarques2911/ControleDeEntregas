@@ -3,6 +3,8 @@ package com.pucrs.controleentregas.services;
 import com.pucrs.controleentregas.entities.DeliveryEntity;
 import com.pucrs.controleentregas.entities.OperatorEntity;
 import com.pucrs.controleentregas.repositories.OperatorRepository;
+import com.pucrs.controleentregas.utils.exceptions.OperatorException;
+import com.pucrs.controleentregas.utils.exceptions.OperatorNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,16 +31,19 @@ public class OperatorService {
 
     public OperatorEntity findById(Long id) {
         Optional<OperatorEntity> operatorEntity = this.repository.findById(id);
-        if (operatorEntity.isPresent()) {
-            return operatorEntity.get();
+        if (operatorEntity.isEmpty()) {
+            throw new OperatorNotFoundException();
         }
-        return null;
+        return operatorEntity.get();
     }
 
     public OperatorEntity deleteById(Long id) {
         OperatorEntity operatorEntity = this.findById(id);
-        if (operatorEntity == null || operatorEntity.getDeliveries() == null || !operatorEntity.getDeliveries().isEmpty()) {
-            return null;
+        if (operatorEntity == null) {
+            throw new OperatorNotFoundException();
+        }
+        if (operatorEntity.getDeliveries() == null || !operatorEntity.getDeliveries().isEmpty()) {
+            throw new OperatorException("Operador possui entregas.");
         }
         this.repository.delete(operatorEntity);
         return operatorEntity;
