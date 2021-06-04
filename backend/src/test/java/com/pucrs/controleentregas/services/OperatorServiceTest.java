@@ -1,8 +1,10 @@
 package com.pucrs.controleentregas.services;
 
 import com.pucrs.controleentregas.dtos.EditDeliveryDTO;
+import com.pucrs.controleentregas.entities.DeliveryEntity;
 import com.pucrs.controleentregas.entities.OperatorEntity;
 import com.pucrs.controleentregas.repositories.OperatorRepository;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,11 +27,25 @@ public class OperatorServiceTest {
     @SpyBean
     private OperatorService operatorService;
 
+//    @DisplayName("Teste deleta um operador")
 //    @Test
 //    public void deleteOperatorTest() {
 //        OperatorEntity operatorMock = OperatorEntity.builder().id(1L).firstName("Guilherme").lastName("Carvalho").build();
 //        when(operatorRepository.findById(any())).thenReturn(Optional.ofNullable(operatorMock));
 //        operatorService.deleteById(1L);
+//        when(operatorRepository.deleteById(any()));
 //        Mockito.verify(operatorRepository, times(1)).deleteById(operatorMock.getId());
 //    }
+
+//    @DisplayName("Teste deleta um operador inexistente retorna exceção")
+//    @Test
+//    public void deleteOperatorTest() {
+//        OperatorEntity operatorMock = OperatorEntity.builder().id(1L).firstName("Guilherme").lastName("Carvalho").build();
+//        when(operatorRepository.findById(any())).thenReturn(Optional.ofNullable(operatorMock));
+//        operatorService.deleteById(1L);
+//        when(operatorRepository.deleteById(any()));
+//        Mockito.verify(operatorRepository, times(1)).deleteById(operatorMock.getId());
+//    }
+
+
 }
