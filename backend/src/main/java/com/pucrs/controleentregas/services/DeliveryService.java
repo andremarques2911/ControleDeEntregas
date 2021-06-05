@@ -88,7 +88,7 @@ public class DeliveryService {
     }
 
     public Integer numberDeliveriesLastThirtyDays() {
-        return this.repository.countDeliveryEntitiesByWithdrawalDateBefore(LocalDateTime.now().minusDays(30L));
+        return this.repository.countDeliveryEntitiesByRegisterDateAfter(LocalDateTime.now().minusDays(30L));
     }
 
     public Integer numberDeliveriesNotWithdrawn() {

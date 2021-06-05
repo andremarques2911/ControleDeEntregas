@@ -22,7 +22,7 @@ public interface DeliveryRepository extends CrudRepository<DeliveryEntity, Long>
     @Query("from DeliveryEntity vo where vo.withdrawalDate is null order by vo.registerDate")
     List<DeliveryEntity> findAllDeliveriesNotWithdrawn();
 
-    Integer countDeliveryEntitiesByWithdrawalDateBefore(LocalDateTime dateTime);
+    Integer countDeliveryEntitiesByRegisterDateAfter(LocalDateTime dateTime);
 
     @Query("from DeliveryEntity vo where vo.registerDate is not null and vo.withdrawalDate is not null order by vo.registerDate")
     List<DeliveryEntity> findAllDeliveriesWithdrawn();

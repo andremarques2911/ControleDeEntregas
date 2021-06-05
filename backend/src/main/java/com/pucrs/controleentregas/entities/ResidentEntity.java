@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
@@ -32,7 +33,7 @@ public class ResidentEntity {
     private Integer apartment;
 
     @Column
-    private Date deactivationDate;
+    private LocalDateTime deactivationDate;
 
 //    @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="resident")
 //    private List<DeliveryEntity> deliveries;
