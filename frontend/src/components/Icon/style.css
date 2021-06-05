@@ -1,0 +1,18 @@
+.field_icon {
+  display: flex;
+  justify-content: flex-end;
+  width: 30%;
+}
+
+.icon {
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.red {
+  color: rgb(255, 0, 0);
+}
+
+.green {
+  color: rgb(53, 160, 31);
+}

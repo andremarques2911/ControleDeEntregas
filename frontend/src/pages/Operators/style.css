@@ -1,0 +1,27 @@
+.panel_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+}
+
+.page_title {
+  font-size: 30px;
+  padding: 5px;
+  margin-bottom: 10px
+}
+
+.register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.register input {
+  margin-right: 5px;
+}
+
+.MuiTextField-root {
+  margin-left: 15px!important;
+}
