@@ -142,23 +142,24 @@ public class DeliveryServiceTest {
         assertEquals(7, result);
     }
 
+    @DisplayName("Testa a geração de relatório")
     @Test
-    public void teste() {
-        DeliveryEntity delivery1 = DeliveryEntity.builder().id(2L).description("Caixa").apartment(102).build();
-        DeliveryEntity delivery2 = DeliveryEntity.builder().id(2L).description("Caixa").apartment(102).build();
-        DeliveryEntity delivery3 = DeliveryEntity.builder().id(3L).description("Caixa").apartment(103).build();
-        DeliveryEntity delivery4 = DeliveryEntity.builder().id(4L).description("Caixa").apartment(104).build();
-        DeliveryEntity delivery5 = DeliveryEntity.builder().id(4L).description("Caixa").apartment(104).build();
-        DeliveryEntity delivery6 = DeliveryEntity.builder().id(4L).description("Caixa").apartment(104).build();
-        DeliveryEntity delivery7 = DeliveryEntity.builder().id(4L).description("Caixa").apartment(104).build();
+    public void generateReportTest() {
+        OperatorEntity operator = OperatorEntity.builder().id(1L).firstName("luis").lastName("rios").build();
+        DeliveryEntity delivery1 = DeliveryEntity.builder().id(2L).description("Caixa").apartment(102).operator(operator).build();
+        DeliveryEntity delivery2 = DeliveryEntity.builder().id(2L).description("Caixa").apartment(102).operator(operator).build();
+        DeliveryEntity delivery3 = DeliveryEntity.builder().id(3L).description("Caixa").apartment(103).operator(operator).build();
+        DeliveryEntity delivery4 = DeliveryEntity.builder().id(4L).description("Caixa").apartment(104).operator(operator).build();
+        DeliveryEntity delivery5 = DeliveryEntity.builder().id(4L).description("Caixa").apartment(104).operator(operator).build();
+        DeliveryEntity delivery6 = DeliveryEntity.builder().id(4L).description("Caixa").apartment(104).operator(operator).build();
+        DeliveryEntity delivery7 = DeliveryEntity.builder().id(4L).description("Caixa").apartment(104).operator(operator).build();
         List<DeliveryEntity> deliveries = new ArrayList<>(
                 Arrays.asList(delivery1, delivery2, delivery3, delivery4, delivery5, delivery6, delivery7)
         );
 
-//        ReportDTO reportDTO = ReportDTO.builder().deliveryCode(delivery1.getId()).build();
         when(deliveryService.findAll()).thenReturn(deliveries);
         List<ReportDTO> listResult = deliveryService.generateReport();
-        assertNotNull(listResult);
+        assertEquals(deliveries.size(), listResult.size());
 
     }
 }

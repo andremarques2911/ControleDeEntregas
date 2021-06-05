@@ -1,6 +1,5 @@
 package com.pucrs.controleentregas.services;
 
-import com.pucrs.controleentregas.entities.DeliveryEntity;
 import com.pucrs.controleentregas.entities.OperatorEntity;
 import com.pucrs.controleentregas.repositories.OperatorRepository;
 import com.pucrs.controleentregas.utils.exceptions.OperatorException;
@@ -42,7 +41,7 @@ public class OperatorService {
         if (operatorEntity == null) {
             throw new OperatorNotFoundException();
         }
-        if (operatorEntity.getDeliveries() == null || !operatorEntity.getDeliveries().isEmpty()) {
+        if (operatorEntity.getDeliveries() != null && !operatorEntity.getDeliveries().isEmpty()) {
             throw new OperatorException("Operador possui entregas.");
         }
         this.repository.delete(operatorEntity);

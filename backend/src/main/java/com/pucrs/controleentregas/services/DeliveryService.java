@@ -97,7 +97,9 @@ public class DeliveryService {
 
     public AverageDateDTO averageTimeBetweenRegistrationAndWithdrawalDeliveries() {
         List<DeliveryEntity> deliveries = this.repository.findAllDeliveriesWithdrawn();
-
+        if (deliveries == null || deliveries.isEmpty()) {
+            return AverageDateDTO.builder().build();
+        }
         int year = 0;
         int month = 0;
         int day = 0;

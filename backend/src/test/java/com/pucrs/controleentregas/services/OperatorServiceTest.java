@@ -14,6 +14,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.test.context.ActiveProfiles;
 
+import java.util.Arrays;
 import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -37,13 +38,18 @@ public class OperatorServiceTest {
     public void deleteOperatorTest() {
         OperatorEntity operatorMock = OperatorEntity.builder().id(1L).firstName("Guilherme").lastName("Carvalho").build();
         when(operatorRepository.findById(any())).thenReturn(Optional.ofNullable(operatorMock));
+        operatorService.deleteById(operatorMock.getId());
         Mockito.verify(operatorService, times(1)).deleteById(operatorMock.getId());
     }
 
     @DisplayName("Teste deleta um operador com entrega vinculada retorna exceção")
     @Test
     public void deleteOperatorTestWithDeliveryRegistered_thenException() throws OperatorException {
-        OperatorEntity operatorMock = OperatorEntity.builder().id(1L).firstName("Guilherme").lastName("Carvalho").build();
+        OperatorEntity operatorMock = OperatorEntity.builder()
+                .id(1L).firstName("Guilherme")
+                .lastName("Carvalho")
+                .deliveries(Arrays.asList(DeliveryEntity.builder().id(1L).build()))
+                .build();
         DeliveryEntity deliveryEntity = DeliveryEntity.builder().id(1L).description("Caixa").operator(operatorMock).build();
         when(operatorRepository.findById(any())).thenReturn(Optional.ofNullable(operatorMock));
         when(deliveryRepository.findById(any())).thenReturn(Optional.ofNullable(deliveryEntity));
