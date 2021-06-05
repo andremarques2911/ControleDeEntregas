@@ -123,7 +123,7 @@ public class DeliveryServiceTest {
         });
     }
 
-    @DisplayName("Testa a quantidade de entregas retiradas nos últimos 30 dias")
+    @DisplayName("Testa a quantidade de entregas nos últimos 30 dias")
     @Test
     public void numberDeliveriesLastThirtyDaysTest() {
         DeliveryEntity delivery1 = DeliveryEntity.builder().id(2L).description("Caixa").apartment(102).build();
