@@ -5,5 +5,8 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Selenium.WebDriver" Version="4.0.0-beta2"/>
+    <PackageReference Include="NUnit" Version="3.13.2"/>
+    <PackageReference Include="Microsoft.SCP.Net.Test.SDK" Version="0.9.4.233"/>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3"/>
   </ItemGroup>
 </Project>

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\andre.marques\\Desktop\\PUCRS\\Ver Val II\\T1\\ControleDeEntregas\\web_driver\\web_driver.csproj": {}
+    "C:\\Users\\andre.marques\\Desktop\\PUCRS\\Ver Val II\\T1\\ControleDeEntregas\\web_driver\\web_driver.csproj": {}
   },
   "projects": {
-    "c:\\Users\\andre.marques\\Desktop\\PUCRS\\Ver Val II\\T1\\ControleDeEntregas\\web_driver\\web_driver.csproj": {
+    "C:\\Users\\andre.marques\\Desktop\\PUCRS\\Ver Val II\\T1\\ControleDeEntregas\\web_driver\\web_driver.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\andre.marques\\Desktop\\PUCRS\\Ver Val II\\T1\\ControleDeEntregas\\web_driver\\web_driver.csproj",
+        "projectUniqueName": "C:\\Users\\andre.marques\\Desktop\\PUCRS\\Ver Val II\\T1\\ControleDeEntregas\\web_driver\\web_driver.csproj",
         "projectName": "web_driver",
-        "projectPath": "c:\\Users\\andre.marques\\Desktop\\PUCRS\\Ver Val II\\T1\\ControleDeEntregas\\web_driver\\web_driver.csproj",
+        "projectPath": "C:\\Users\\andre.marques\\Desktop\\PUCRS\\Ver Val II\\T1\\ControleDeEntregas\\web_driver\\web_driver.csproj",
         "packagesPath": "C:\\Users\\andre.marques\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\andre.marques\\Desktop\\PUCRS\\Ver Val II\\T1\\ControleDeEntregas\\web_driver\\obj\\",
+        "outputPath": "C:\\Users\\andre.marques\\Desktop\\PUCRS\\Ver Val II\\T1\\ControleDeEntregas\\web_driver\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\andre.marques\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -38,6 +38,18 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.SCP.Net.Test.SDK": {
+              "target": "Package",
+              "version": "[0.9.4.233, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.13.2, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            },
             "Selenium.WebDriver": {
               "target": "Package",
               "version": "[4.0.0-beta2, )"

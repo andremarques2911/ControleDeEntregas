@@ -17,3 +17,17 @@ C:\Users\andre.marques\Desktop\PUCRS\Ver Val II\T1\ControleDeEntregas\web_driver
 C:\Users\andre.marques\Desktop\PUCRS\Ver Val II\T1\ControleDeEntregas\web_driver\obj\Debug\net5.0\ref\web_driver.dll
 C:\Users\andre.marques\Desktop\PUCRS\Ver Val II\T1\ControleDeEntregas\web_driver\obj\Debug\net5.0\web_driver.pdb
 C:\Users\andre.marques\Desktop\PUCRS\Ver Val II\T1\ControleDeEntregas\web_driver\obj\Debug\net5.0\web_driver.genruntimeconfig.cache
+C:\Users\andre.marques\Desktop\PUCRS\Ver Val II\T1\ControleDeEntregas\web_driver\bin\Debug\net5.0\nunit.framework.dll
+C:\Users\andre.marques\Desktop\PUCRS\Ver Val II\T1\ControleDeEntregas\web_driver\bin\Debug\net5.0\log4net.dll
+C:\Users\andre.marques\Desktop\PUCRS\Ver Val II\T1\ControleDeEntregas\web_driver\bin\Debug\net5.0\log4net.xml
+C:\Users\andre.marques\Desktop\PUCRS\Ver Val II\T1\ControleDeEntregas\web_driver\bin\Debug\net5.0\Microsoft.Diagnostics.Tracing.EventSource.dll
+C:\Users\andre.marques\Desktop\PUCRS\Ver Val II\T1\ControleDeEntregas\web_driver\bin\Debug\net5.0\Microsoft.Diagnostics.Tracing.EventSource.xml
+C:\Users\andre.marques\Desktop\PUCRS\Ver Val II\T1\ControleDeEntregas\web_driver\bin\Debug\net5.0\Microsoft.SCPNet.dll.config
+C:\Users\andre.marques\Desktop\PUCRS\Ver Val II\T1\ControleDeEntregas\web_driver\bin\Debug\net5.0\SCPHost.exe
+C:\Users\andre.marques\Desktop\PUCRS\Ver Val II\T1\ControleDeEntregas\web_driver\bin\Debug\net5.0\SCPLogger.Log4net.dll
+C:\Users\andre.marques\Desktop\PUCRS\Ver Val II\T1\ControleDeEntregas\web_driver\bin\Debug\net5.0\SCPLogger.Log4net.EtwAppender.dll
+C:\Users\andre.marques\Desktop\PUCRS\Ver Val II\T1\ControleDeEntregas\web_driver\bin\Debug\net5.0\SCPLogger.Log4net.EtwAppender.dll.config
+C:\Users\andre.marques\Desktop\PUCRS\Ver Val II\T1\ControleDeEntregas\web_driver\bin\Debug\net5.0\SCPLogger_ReadMe.txt
+C:\Users\andre.marques\Desktop\PUCRS\Ver Val II\T1\ControleDeEntregas\web_driver\bin\Debug\net5.0\SCPPerfCounter.AzureCounter.dll
+C:\Users\andre.marques\Desktop\PUCRS\Ver Val II\T1\ControleDeEntregas\web_driver\bin\Debug\net5.0\SCPPerfCounter.dll
+C:\Users\andre.marques\Desktop\PUCRS\Ver Val II\T1\ControleDeEntregas\web_driver\bin\Debug\net5.0\ZooKeeperNet.dll

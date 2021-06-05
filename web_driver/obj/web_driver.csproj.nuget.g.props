@@ -15,4 +15,11 @@
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
   </PropertyGroup>
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)nunit\3.13.2\build\NUnit.props" Condition="Exists('$(NuGetPackageRoot)nunit\3.13.2\build\NUnit.props')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.scp.net.test.sdk\0.9.4.233\build\Microsoft.SCP.Net.Test.SDK.props" Condition="Exists('$(NuGetPackageRoot)microsoft.scp.net.test.sdk\0.9.4.233\build\Microsoft.SCP.Net.Test.SDK.props')" />
+  </ImportGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgMicrosoft_SCP_Net_Test_SDK Condition=" '$(PkgMicrosoft_SCP_Net_Test_SDK)' == '' ">C:\Users\andre.marques\.nuget\packages\microsoft.scp.net.test.sdk\0.9.4.233</PkgMicrosoft_SCP_Net_Test_SDK>
+  </PropertyGroup>
 </Project>

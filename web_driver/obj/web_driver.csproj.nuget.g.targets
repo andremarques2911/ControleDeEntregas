@@ -3,4 +3,8 @@
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
   </PropertyGroup>
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)netstandard.library\2.0.0\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('$(NuGetPackageRoot)netstandard.library\2.0.0\build\netstandard2.0\NETStandard.Library.targets')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.scp.net.test.sdk\0.9.4.233\build\Microsoft.SCP.Net.Test.SDK.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.scp.net.test.sdk\0.9.4.233\build\Microsoft.SCP.Net.Test.SDK.targets')" />
+  </ImportGroup>
 </Project>
