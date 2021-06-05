@@ -2,6 +2,7 @@ package com.pucrs.controleentregas.services;
 
 import com.pucrs.controleentregas.dtos.CreateDeliveryDTO;
 import com.pucrs.controleentregas.dtos.EditDeliveryDTO;
+import com.pucrs.controleentregas.dtos.ReportDTO;
 import com.pucrs.controleentregas.entities.DeliveryEntity;
 import com.pucrs.controleentregas.entities.OperatorEntity;
 import com.pucrs.controleentregas.entities.ResidentEntity;
@@ -139,5 +140,25 @@ public class DeliveryServiceTest {
         when(deliveryRepository.countDeliveryEntitiesByRegisterDateAfter(any())).thenReturn(deliveries.size());
         var result = deliveryService.numberDeliveriesLastThirtyDays();
         assertEquals(7, result);
+    }
+
+    @Test
+    public void teste() {
+        DeliveryEntity delivery1 = DeliveryEntity.builder().id(2L).description("Caixa").apartment(102).build();
+        DeliveryEntity delivery2 = DeliveryEntity.builder().id(2L).description("Caixa").apartment(102).build();
+        DeliveryEntity delivery3 = DeliveryEntity.builder().id(3L).description("Caixa").apartment(103).build();
+        DeliveryEntity delivery4 = DeliveryEntity.builder().id(4L).description("Caixa").apartment(104).build();
+        DeliveryEntity delivery5 = DeliveryEntity.builder().id(4L).description("Caixa").apartment(104).build();
+        DeliveryEntity delivery6 = DeliveryEntity.builder().id(4L).description("Caixa").apartment(104).build();
+        DeliveryEntity delivery7 = DeliveryEntity.builder().id(4L).description("Caixa").apartment(104).build();
+        List<DeliveryEntity> deliveries = new ArrayList<>(
+                Arrays.asList(delivery1, delivery2, delivery3, delivery4, delivery5, delivery6, delivery7)
+        );
+
+//        ReportDTO reportDTO = ReportDTO.builder().deliveryCode(delivery1.getId()).build();
+        when(deliveryService.findAll()).thenReturn(deliveries);
+        List<ReportDTO> listResult = deliveryService.generateReport();
+        assertNotNull(listResult);
+
     }
 }
