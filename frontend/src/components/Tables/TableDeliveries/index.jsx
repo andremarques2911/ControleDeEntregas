@@ -55,7 +55,7 @@ export default function TableDeliveries(props) {
               <StyledTableCell align="right">{row.description}</StyledTableCell>
               <StyledTableCell align="right">{row.apartment}</StyledTableCell>
               <StyledTableCell align="right">{row.operatorName}</StyledTableCell>
-              <StyledTableCell align="right">{row.withdrawalDate && Moment(row.withdrawalDate).format('DD/MM/YYY HH:MM')}</StyledTableCell>
+              <StyledTableCell align="right" id={`withdrawal_date${row.id}`}>{row.withdrawalDate && Moment(row.withdrawalDate).format('DD/MM/YYY HH:MM')}</StyledTableCell>
               <StyledTableCell align="right">{row.residentName}</StyledTableCell>
               <StyledTableCell align="right">
                 {

@@ -14,7 +14,8 @@ namespace Login
     {
         static void Main(string[] args)
         {
-            // CreateOperatorTest();
+            CreateOperatorTest();
+            Thread.Sleep(2000);
             RegisterWithdrawalTest();
         }
 
@@ -23,8 +24,8 @@ namespace Login
             IWebDriver driver = new ChromeDriver(@"chrome\chromedriver");
             driver.Navigate().GoToUrl("http://localhost:3000/");
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-            IWebElement firstResult = wait.Until(e => e.FindElement(By.Id("main_operators")));
-            firstResult.Click();
+            IWebElement mainOperator = wait.Until(e => e.FindElement(By.Id("main_operators")));
+            mainOperator.Click();
             Thread.Sleep(2000);
             IList<IWebElement> operatorsOld = driver.FindElements(By.CssSelector("[id^=operator_]"));
             Thread.Sleep(2000);
@@ -46,19 +47,20 @@ namespace Login
             IWebDriver driver = new ChromeDriver(@"chrome\chromedriver");
             driver.Navigate().GoToUrl("http://localhost:3000/");
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-            IWebElement firstResult = wait.Until(e => e.FindElement(By.Id("main_deliveries")));
-            firstResult.Click();
-            IList<IWebElement> deliveriesOld = wait.Until(e => e.FindElements(By.CssSelector("[id^=fa-edit_]")));
+            IWebElement mainDeliveries = wait.Until(e => e.FindElement(By.Id("main_deliveries")));
+            mainDeliveries.Click();
+            IWebElement delivery = wait.Until(e => e.FindElement(By.CssSelector(".fa-edit")));
             Thread.Sleep(2000);
-            deliveriesOld[0].Click();
+            delivery.Click();
             Thread.Sleep(2000);
             driver.FindElement(By.Id("swal-input1")).SendKeys("1");
             Thread.Sleep(2000);
             driver.FindElement(By.CssSelector(".swal2-confirm")).Click();
+            Thread.Sleep(2000);
             wait.Until(e => e.FindElement(By.CssSelector(".swal2-confirm"))).Click();
             Thread.Sleep(2000);
-            IList<IWebElement> operatorsNew = driver.FindElements(By.CssSelector("[id^=operator_]"));
-            // Assert.AreEqual(deliveries.Count + 1, operatorsNew.Count);
+            IWebElement deliveryNew = driver.FindElement(By.CssSelector("[id^=withdrawal_date]"));
+            Assert.IsNotEmpty(deliveryNew.Text);
             Thread.Sleep(2000);
             driver.Quit();
         }
